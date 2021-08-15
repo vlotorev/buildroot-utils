@@ -1,0 +1,10 @@
+---
+sudo: false
+language: python
+python:
+  - "3.9"
+install: pip install tox
+script: tox --parallel
+cache:
+  directories:
+    - $HOME/.cache/pre-commit

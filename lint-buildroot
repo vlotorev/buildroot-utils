@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+
+# Script to run check-package standard Buildroot utility with proper --br2-external option:
+# detect whether current directory and subdirectories are Buildroot external tree or just
+# Buildroot:
+# if external.desc is found in subdirectories, then check-package is run with --br2-external
+
+externals=$(find . -type f -name external.desc ! -path './support/testing/tests/*')
+external=""
+if [ ! -z "$externals" ]; then
+    external=--br2-external
+fi
+
+# Exclude Signed-Off-By (Sob) for patch files check as we don't require it.
+check-package $external --exclude Sob $*

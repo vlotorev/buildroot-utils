@@ -1,0 +1,17 @@
+---
+- id: lint-buildroot
+  name: lint-buildroot
+  description: |
+    Lint Buildroot packages with lint-buildroot tool.
+    This utility adds --br2-external option if required and runs
+    check-package.
+  language: python
+  types: ['text']
+  entry: lint-buildroot
+
+- id: check-package
+  name: check-package
+  description: Lint Buildroot packages with check-package utility.
+  language: python
+  types: ['text']
+  entry: check-package
