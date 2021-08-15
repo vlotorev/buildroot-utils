@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+
+# This script should be run from top-level Buildroot tree or from top-level
+# of Buildroot external tree.
+
+# Script doesn't handle the case when run on top-level Buildroot tree
+# whic contains external trees.
+
+# Detect external tree. Exclude external.desc files from Buildroot support directory
+# in case script is run on top Buildroot.
+
+externals=$(find . -type f -name external.desc ! -path './support/testing/tests/*')
+external=""
+if [ ! -z "$externals" ]; then
+    external=--br2-external
+fi
+
+# Exclude Signed-Off-By (Sob) for patch files check as we don't require it.
+check-package $external --exclude Sob $*
