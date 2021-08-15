@@ -1,0 +1,5 @@
+.eggs
+*egg-info
+.tox
+check-package
+checkpackagelib/
