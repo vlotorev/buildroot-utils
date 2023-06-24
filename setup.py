@@ -3,8 +3,8 @@ import subprocess
 import setuptools
 from setuptools.command.egg_info import egg_info
 
-# https://github.com/buildroot/buildroot/releases/tag/2021.08-rc2
-BUILDROOT_VERSION = "6da42d767a42e8e95b1ba042fbe99c3c8de13f28"
+# https://github.com/buildroot/buildroot/releases/tag/2023.05
+BUILDROOT_VERSION = "dbb0b4274cdbd74cf22fb4da4c1e43084f3d3125"
 
 
 class egg_info_extra(egg_info):
@@ -18,7 +18,10 @@ setuptools.setup(
     description="Buildroot utils packaged as Python package",
     python_requires=">=3.6,<4.0",
     packages=["checkpackagelib"],
-    install_requires=["six<2.0"],
+    install_requires=[
+        "flake8<7.0",
+        "python-magic<1.0",
+    ],
     use_scm_version=True,
     setup_requires=["setuptools_scm"],
     scripts=[
